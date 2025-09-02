@@ -1,4 +1,4 @@
-﻿# The script of the game goes in this file.
+# The script of the game goes in this file.
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
@@ -174,8 +174,8 @@ with dissolve
 show mikel photo gif with dissolve
 
 "He's always been kind and sweet, the best type of friend you could ask for."
-"The first time we met in middle school, I thought he was arrogant and too cool for me but suprisingly he wanted to be my first friend."
-"We stayed close since then and have looked out for eachother."
+"The first time we met in middle school, I thought he was arrogant and too cool for me, but surprisingly, he wanted to be my first friend."
+"We stayed close since then and have looked out for each other."
 
 hide mikel photo gif with fade
 
@@ -201,7 +201,7 @@ label continue1_a:
 
     "(I approach him confidently like any friend does and tap his shoulder)"
 
-    "Hey, enjoying the party? WOOOOWOOOOO"
+    "Hey, enjoying the party?"
 
     show mikel mc neutral gif
     with dissolve
@@ -219,7 +219,7 @@ label continue1_a:
    
     "(I can tell that's not an honest reply.)"
     "(Mikel is still an idiot to think he can fool me.)"
-    "(We've been so close that it's impossible to lie to eachother, we'd know right away.)"
+    "(We've been so close that it's impossible to lie to each other, we'd know right away.)"
     
     "C'mon Mikel, you can be honest with me."
     
@@ -287,7 +287,7 @@ label ending2:
     hide mikel sad headdown gif at left
 
     show mikel neutral gif at left
-    Mikel "She just did something that suprised me today."
+    Mikel "She just did something that surprised me today."
 
     "Yeah? Like what?"
     hide mikel neutral gif
@@ -367,7 +367,7 @@ label ending2_a:
 
     show mikel happy armscrossed gif at left 
 
-    Mikel "Infact, since you know me so well, you know what I'm gonna say next-"
+    Mikel "In fact, since you know me so well, you know what I'm gonna say next-"
 
     "You're gonna say="
 
@@ -382,7 +382,7 @@ label ending2_a:
 
     "( Mikel shows a satisfied smirk and nods his head up at me, gesturing us to move... )"
 
-    "( ... We try and slip inbetween the crowd at the party and walk towards the backdoor. )" 
+    "( ... We try and slip in between the crowd at the party and walk towards the backdoor. )" 
 
     stop music fadeout 2.0
 
@@ -484,7 +484,7 @@ label ending2_a:
 
     show mikel outdoor sad away
 
-    Mikel "... We're not gonna be so close once we drfit apart to different colleges..."
+    Mikel "... We're not gonna be so close once we drift apart to different colleges..."
     
     Mikel "and I..."
 
@@ -513,7 +513,7 @@ label ending2_a:
 
     hide mikel outdoor neutral with fade
 
-    "(We both smoke the last bit of the ciggarette and stare out in the sky.)"
+    "(We both smoke the last bit of the cigarette and stare out in the sky.)"
 
     "(the crowd at the party was slowly dying down since it was 2 am.)"
 
@@ -527,7 +527,7 @@ label ending3:
     show paper inspect
     with fade
     "(I look at the piece of paper that looks to be crumpled with some writing in it)"
-    "(before I can inspect it futher, I try to ask Mikel about it.)"
+    "(before I can inspect it further, I try to ask Mikel about it.)"
     "Were you looking at this?"
     hide paper inspect
     with dissolve
@@ -549,7 +549,7 @@ label ending3:
 
     show mikel sad away gif
     Mikel "...It was a love letter."
-    "(???)" ## Add suprised SFX ?
+    "(???)" ## Add surprised SFX ?
     " to you??"
     hide mikel sad away gif
 
@@ -967,7 +967,7 @@ label ending4_b:
     "( Mikel shows a satisfied smirk and nods his head up at me, gesturing us to move... )"
     hide mikel mc happy armscrossed gif with dissolve
 
-    "(We try and slip inbetween the crowd at the party... )"  with dissolve
+    "(We try and slip in between the crowd at the party... )"  with dissolve
 
     "(.... The crowd felt tighter the more we tried to move past but we eventually reach the backdoor.)"
 
@@ -1071,7 +1071,7 @@ label ending4_b:
 
     show mikel outdoor sad away
 
-    Mikel "... We're not gonna be so close once we drfit apart to different colleges..."
+    Mikel "... We're not gonna be so close once we drift apart to different colleges..."
     
     Mikel "and I..."
 
@@ -1100,7 +1100,7 @@ label ending4_b:
 
     hide mikel outdoor neutral with fade
 
-    "(We both smoke the last bit of the ciggarette and stare out in the sky.)"
+    "(We both smoke the last bit of the cigarette and stare out in the sky.)"
 
     "(the crowd at the party was slowly dying down since it was 2 am.)"
 
@@ -1116,7 +1116,7 @@ label ending1_a:
     "(I continue on and party with my friends)"
     "(we laugh and drink some more till one of my friend ends up puking in the kitchen.)"
     "(it pisses off the guy who's hosting the party.)"
-    "(We look at eachother and decide it's better if we all just leave.)"
+    "(We look at each other and decide it's better if we all just leave.)"
     hide scene bg party
     stop music fadeout 2.0
 
@@ -1155,7 +1155,7 @@ label happyending:
 
     "(The only thing is that, I couldn't confess now...I still wasn't sure how he felt about me...)"
 
-    "(And we're moving apart after graduting school and entering into different colleges...)"
+    "(And we're moving apart after graduating school and entering into different colleges...)"
 
     "(I couldn't tell him now...but he will know in the future when its right...)"
 
