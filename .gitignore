@@ -1,0 +1,41 @@
+# Ren'Py compiled files
+*.rpyc
+*.rpymc
+*.rpyb
+*.pyc
+*.pyo
+
+# Ren'Py cache and temporary files
+game/cache/
+game/saves/
+tmp/
+errors.txt
+
+# Ren'Py build artifacts
+*.app/
+*.exe
+*.dmg
+*.tar.bz2
+*.zip
+
+# System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Backup files
+*.bak
+*~
+
+# Editor files
+*.swp
+*.swo
+.vscode/
+*.sublime-*
+
+# Log files
+*.log
+traceback.txt
+
+# Distribution files
+dist/
