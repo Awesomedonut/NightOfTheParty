@@ -201,7 +201,7 @@ label continue1_a:
 
     "(I approach him confidently like any friend does and tap his shoulder)"
 
-    "Hey, enjoying the party?"
+    "Hey, enjoying the party? WOOOOWOOOOO"
 
     show mikel mc neutral gif
     with dissolve

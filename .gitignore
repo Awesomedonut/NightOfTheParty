@@ -40,3 +40,4 @@ traceback.txt
 # Distribution files
 dist/
 *.clip
+log.txt
