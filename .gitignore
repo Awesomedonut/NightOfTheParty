@@ -39,3 +39,6 @@ traceback.txt
 
 # Distribution files
 dist/
+
+# Large binary files (use Git LFS instead)
+*.clip
