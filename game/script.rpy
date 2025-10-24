@@ -61,6 +61,8 @@ init 800 python:
 
     # put your list of character images here
     'Josh': 'back',
+    'jason': 'back',
+    'mikel': 'back',
     'vivian2': 'back',
     }
 
