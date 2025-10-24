@@ -64,6 +64,13 @@ init 800 python:
     'jason': 'back',
     'mikel': 'back',
     'vivian2': 'back',
+    
+    # gif animations
+    'friends': 'back',
+    'paper': 'back',
+    'shygirlstill': 'back',
+    'mandshygirl': 'back',
+    'happyend': 'back',
     }
 
 
