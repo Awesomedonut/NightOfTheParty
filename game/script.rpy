@@ -302,6 +302,7 @@ label continue1_a:
 
 label threechoices:
     scene bg party
+    hide mikel
     with dissolve
 
     call screen choicesButton
