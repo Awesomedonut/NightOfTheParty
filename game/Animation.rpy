@@ -1,9 +1,9 @@
 # Other Gifs
 image jason happy gif:
     "jason happy 1"
-    pause 0.6
+    pause 0.4
     "jason happy 2"
-    pause 0.6
+    pause 0.4
     repeat
 
 image jason smug gif:
@@ -15,9 +15,9 @@ image jason smug gif:
 
 image jason mad gif:
     "jason mad 1"
-    pause 0.6
+    pause 0.4
     "jason mad 2"
-    pause 0.6
+    pause 0.4
     repeat
 
 image friends photos:
