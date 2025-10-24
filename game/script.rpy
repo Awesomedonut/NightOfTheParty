@@ -12,8 +12,8 @@ define Jason = Character("Josh", color="FFFFFF")
 # The game starts here.
 init 800 python:
     class MouseParallax(renpy.Displayable):
-        def init(self,layer_info):
-            super(renpy.Displayable,self).init()
+        def __init__(self,layer_info):
+            super(MouseParallax,self).__init__()
             self.xoffset,self.yoffset=0.0,0.0
 
             self.sort_layer=sorted(layer_info,reverse=True)
@@ -52,7 +52,7 @@ init 800 python:
             d.xoffset, d.yoffset=0,0
         return 0
 
-    MouseParallax([(-20,"farthestBack"),(-50,"farBack"),(-80,"back"),(-30,"front"),(50,"inyourface")])
+    mdisp = MouseParallax([(-20,"farthestBack"),(-50,"farBack"),(-80,"back"),(-30,"front"),(50,"inyourface")])
 
     config.tag_layer = {
     'effects': 'back', # particle effects etc.
