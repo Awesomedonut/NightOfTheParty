@@ -130,6 +130,43 @@ init:
                           **properties)
 
         Shake = renpy.curry(_Shake)
+        
+        class MouseCamera(renpy.Displayable):
+            def __init__(self, child, xfactor=0.02, yfactor=0.02, **kwargs):
+                super(MouseCamera, self).__init__(**kwargs)
+                self.child = renpy.displayable(child)
+                self.xfactor = xfactor
+                self.yfactor = yfactor
+                self.target_x = self.target_y = 0
+                self.x = self.y = 0
+                self.st = 0
+
+            def event(self, ev, x, y, st):
+                import pygame
+                if ev.type == pygame.MOUSEMOTION:
+                    # compute target offset: e.g., negative so movement is opposite mouse
+                    self.target_x = - (x - (config.screen_width/2)) * self.xfactor
+                    self.target_y = - (y - (config.screen_height/2)) * self.yfactor
+                    renpy.redraw(self, 0)
+                return ev
+
+            def render(self, width, height, st, at):
+                # simple smoothing:
+                speed = (st - self.st) * 8  # faster smoothing factor
+                self.x += (self.target_x - self.x) * speed
+                self.y += (self.target_y - self.y) * speed
+                self.st = st
+
+                child_render = renpy.render(self.child, width, height, st, at)
+                rv = renpy.Render(width, height)
+                rv.blit(child_render, (self.x, self.y))
+                # if still moving, schedule redraw
+                if abs(self.x - self.target_x) > 0.5 or abs(self.y - self.target_y) > 0.5:
+                    renpy.redraw(self, 0)
+                return rv
+
+            def visit(self):
+                return [ self.child ]
     #
 
 #
@@ -301,8 +338,9 @@ label continue1_a:
     "(I guess he's looking at...)"
 
 label threechoices:
-    scene bg party
+    scene black
     hide mikel
+    show screen scene_with_camera
     with dissolve
 
     call screen choicesButton
