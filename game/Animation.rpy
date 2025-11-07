@@ -12,7 +12,7 @@ image jason happy gif:
     pause 0.3
     "jason happy eyes closed 2"
     pause 0.3
-    repeatSS
+    repeat
 
 image jason smug gif:
     "jason smug 1"
