@@ -4,7 +4,15 @@ image jason happy gif:
     pause 0.4
     "jason happy 2"
     pause 0.4
-    repeat
+    "jason happy 1"
+    pause 0.4
+    "jason happy 2"
+    pause 0.4
+    "jason happy eyes closed 1"
+    pause 0.3
+    "jason happy eyes closed 2"
+    pause 0.3
+    repeatSS
 
 image jason smug gif:
     "jason smug 1"

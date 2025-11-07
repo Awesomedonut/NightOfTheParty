@@ -173,7 +173,7 @@ with dissolve
 "(It was no other than Josh. The guy who just couldn't stop asking me out from freshman year.)"
 "(He looks as happy as always and approaches me with no hesitation.)"
 
-show jason happy gif
+show jason happy gif 
 with easeinright
 Jason "Hey! Quick Question." with dissolve
 Jason "Gonna miss me once I'm off to college?"
