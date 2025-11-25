@@ -47,7 +47,7 @@ init 800 python:
             return
 
     def trans(d, st, at, disp=None, m=None):
-        d.xoffset, d.yoffset = int(round(mdisp.xoffset)), int(round(mdisp.yoffset))
+        d.xoffset, d.yoffset = int(round(m*disp.xoffset)), int(round(m*disp.yoffset))
         if persistent.bg_parallax is False:
             d.xoffset, d.yoffset=0,0
         return 0
