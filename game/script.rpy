@@ -3,6 +3,7 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
+define pov = Character("[povname]") #THE MAIN CHARACTER 
 define Mikel = Character("Mikel", color="#FFFFFF")
 define Friend = Character('Friend', color="#FFFFFF")
 define unknown = Character('???', color="#FFFFFF")
@@ -10,6 +11,36 @@ define Jason = Character("Josh", color="FFFFFF")
 
 
 # The game starts here.
+
+init python:
+    def callback(event, **kwargs):
+        if event == "show":
+            renpy.music.play("Neutral.mp3", channel="sound")
+        elif event == "slow_done" or event == "end":
+            renpy.music.stop(channel="sound")
+
+    pov = Character("[povname]", callback=callback)
+
+init python:
+    def callback(event, **kwargs):
+        if event == "show":
+            renpy.music.play("godawful-beeping-noise.mp3", channel="sound")
+        elif event == "slow_done" or event == "end":
+            renpy.music.stop(channel="sound")
+
+    Mikel = Character("Mikel", callback=callback)
+    Friend = Character("Friend", callback=callback)
+    unknown = Character("???", callback=callback)
+
+init python:
+    def callback(event, **kwargs):
+        if event == "show":
+            renpy.music.play("beeping-deep.mp3", channel="sound")
+        elif event == "slow_done" or event == "end":
+            renpy.music.stop(channel="sound")
+
+    Jason = Character("Josh", callback=callback)
+
 init 800 python:
     class MouseParallax(renpy.Displayable):
         def __init__(self,layer_info):
@@ -166,19 +197,51 @@ label start:
     "(We're gonna graduate soon and I want to make sure to have the most fun before college starts.)"
 
 
-hide friends photos
-with dissolve
+    hide friends photos
+    with dissolve
 
-"(But before I could continue on my fun, I could feel someone's eyes on me.)"
-"(It was no other than Josh. The guy who just couldn't stop asking me out from freshman year.)"
-"(He looks as happy as always and approaches me with no hesitation.)"
+    "(But before I could continue on my fun, I could feel someone's eyes on me.)"
+    "(It was no other than Josh. Sleezy guy who creeps out everyone.)"
+    "(He looks as happy as always and approaches me with no hesitation.)"
 
-show jason happy gif 
-with easeinright
-Jason "Hey! Quick Question." with dissolve
-Jason "Gonna miss me once I'm off to college?"
+    show jason happy gif 
+    with easeinright
+    Jason "Hey! Quick Question." with dissolve
 
-"(As annoying as that question was, I knew I had to give an answer so he could leave.)"
+    unknown "yeah?"
+
+    Jason "Damn, Why havent I seen YOU before?"
+    Jason "what's your name sweetheart?"
+
+    $ povname = renpy.input("Type your name! Don't have one? Just click enter. XD", length=16)
+    $    povname = povname.strip()
+
+    if not povname:
+        $ povname = "Riven"
+
+    pov "Its [povname]."
+
+    Jason "oh wow...[povname]..."
+
+    hide jason happy gif
+
+    show jason mad gif
+
+    Jason "Oh yes! YOU!!"
+
+    hide jason mad gif
+
+    show jason happy gif
+
+    Jason "I've seen you before at school."
+
+    Jason "We've locked eyes and exhanged smiles."
+
+    pov "Right..."
+
+    Jason "So, you're Gonna miss me once I'm off to college?"
+
+    "(As annoying as that question was, I knew I had to give an answer so he could leave.)"
 
 menu:
     with dissolve
@@ -191,7 +254,7 @@ menu:
         jump choices1_b
 
 label choices1_a:
-    "Yeah surrreee I'll miss you SOOooOO much that I'll follow you. I'm sure you already knew that right? (rolls eyes internally)"
+    pov "Yeah surrreee I'll miss you SOOooOO much that I'll follow you. I'm sure you already knew that right? (rolls eyes internally)"
     show jason smug gif
     Jason "I knew that, aha." 
 
@@ -200,10 +263,10 @@ label choices1_a:
     jump choices1_common
 
 label choices1_b:
-    "No. But if you leave in 5 seconds, maybe I'll consider it. You wanna take that chance?" 
+    pov "No. But if you leave in 5 seconds, maybe I'll consider it. You wanna take that chance?" 
 
     show jason mad gif
-    play sound "audio/ショックな時のピアノの不協和音_shock.mp3" volume 0.3
+    play audio "audio/ショックな時のピアノの不協和音_shock.mp3" volume 0.3
     Jason "!!!" with Shake((20, 20, 20, 20), 0.5, dist=10)
     pause 0.3
 
@@ -213,7 +276,7 @@ label choices1_b:
     Jason "..."
     Jason "Naaaah. You're lying."
 
-    "Yeah sure..."
+    pov "Yeah sure..."
 
     jump choices1_common
 
@@ -264,7 +327,7 @@ label continue1_a:
 
     "(I approach him confidently like any friend does and tap his shoulder)"
 
-    "Hey, enjoying the party?"
+    pov "Hey, enjoying the party?"
 
     show mikel mc neutral gif
     with dissolve
@@ -284,7 +347,7 @@ label continue1_a:
     "(Mikel is still an idiot to think he can fool me.)"
     "(We've been so close that it's impossible to lie to each other, we'd know right away.)"
     
-    "C'mon Mikel, you can be honest with me."
+    pov "C'mon Mikel, you can be honest with me."
     
 
     hide mikel mc neutral gif
@@ -328,7 +391,7 @@ label ending2:
     show shygirlstill gif 
     with fade
 
-    "Are you looking at that girl over there?"
+    pov "Are you looking at that girl over there?"
 
     show mikel neutral gif at left
     with dissolve
@@ -342,7 +405,7 @@ label ending2:
 
     Mikel "She just looks alone over there..."
 
-    "Do you know her?"
+    pov "Do you know her?"
     hide mikel sad away gif at left
 
     show mikel sad headdown gif at left
@@ -353,7 +416,7 @@ label ending2:
     show mikel neutral gif at left
     Mikel "She just did something that surprised me today."
 
-    "Yeah? Like what?"
+    pov "Yeah? Like what?"
     hide mikel neutral gif
 
     show mikel happy armscrossed gif at left
@@ -368,9 +431,9 @@ label ending2:
 
     "(I have a funny feeling in my stomach hearing that but I ignore it.)"
 
-    "Hey! Good for you lucky guy!"
+    pov "Hey! Good for you lucky guy!"
 
-    "Did you talk to her yet?"
+    pov "Did you talk to her yet?"
     
     hide mikel happy gif
 
@@ -391,7 +454,6 @@ menu:
         play sound "audio/hit_sfx/paper-245786.mp3"
         jump ending3_b
         
-        
     
     "No, think over it...":
         play sound "audio/hit_sfx/paper-245786.mp3"
@@ -399,11 +461,11 @@ menu:
 
 
 label ending2_a:
-    "No offense Mikel..."
-    "... I know you tend to act spontaneous and all-"
-    "-and go with the flow but..."
-    "...I think you should think over it."
-    "This is someone's feelings you're dealing with."
+    pov "No offense Mikel..."
+    pov "... I know you tend to act spontaneous and all-"
+    pov "-and go with the flow but..."
+    pov "...I think you should think over it."
+    pov "This is someone's feelings you're dealing with."
 
     show mikel mc neutral gif at left
     hide mikel mc neutral gif
@@ -433,14 +495,14 @@ label ending2_a:
 
     Mikel "In fact, since you know me so well, you know what I'm gonna say next-"
 
-    "You're gonna say="
+    pov "You're gonna say-"
 
-    "-that you're so bored of this party and music that you wanna step out for a smoke?"
+    pov "-that you're so bored of this party and music that you wanna step out for a smoke?"
 
     hide mikel happy gif
 
     show mikel happy armscrossed gif at left
-    "Yup. Right as always."
+    Mikel "Yup. Right as always."
     hide mikel happy armscrossed gif at left 
     hide shygirlstill gif
 
@@ -449,6 +511,10 @@ label ending2_a:
     "( ... We try and slip in between the crowd at the party and walk towards the backdoor. )" 
 
     stop music fadeout 2.0
+
+    jump ending24_common
+
+label ending24_common:
 
     play music "audio/outdoormusic.mp3" volume 2.0 fadein 3.0
 
@@ -477,7 +543,7 @@ label ending2_a:
 
     Mikel "I'm glad we're out."
 
-    "I thought you like that scene?"
+    pov "I thought you like that scene?"
 
     hide mikel outdoor neutral
 
@@ -499,19 +565,20 @@ label ending2_a:
 
     Mikel "... would rather be with you alone right now."
 
-    "Oh.."
+    pov "Oh.."
 
     "( I try not to focus so hard on how my heart skips a beat from that sentence...)"
 
-    "Me too. My friends were gonna make me have another shot, I'm glad I ran with you here."
+    pov "Me too. My friends were gonna make me have another shot, I'm glad I ran out with you here."
 
-    "I almost escaped the dreadful vomit session that comes with it, aha."
+    pov "I almost escaped the dreadful vomit session that comes with it, aha."
 
     Mikel "So I saved you is what you're saying. heh."
 
-    "When you word it that way, yeah!"
+    pov "When you word it that way, yeah!"
     
-    "Thanks for saving me."
+    pov "Thanks for saving me."
+
     hide mikel outdoor neutral
 
     show mikel outdoor neutral away
@@ -522,13 +589,13 @@ label ending2_a:
     
     "(He's still in deep thought about something...)"
 
-    "You're thinking about pooping?"
+    pov "You're thinking about pooping?"
 
     hide mikel outdoor neutral away
 
     show mikel outdoor shock
 
-    "What??"
+    Mikel "What??"
 
     Mikel "No! I did that- before the- Urgh I mean-"
 
@@ -562,18 +629,18 @@ label ending2_a:
 
     Mikel "And I feel sorry that I didn't."
 
-    "Oh wow. I ..."
+    pov "Oh wow. I ..."
     
-    "... I was thinking the same thing actually."
+    pov "... I was thinking the same thing actually."
 
-    "I know we were busy with college applications and stuff so I can't blame you."
+    pov "I know we were busy with college applications and stuff so I can't blame you."
 
     hide mikel outdoor sad
 
     show mikel outdoor neutral    
     Mikel "I'm still glad we're here talking..."
 
-    "Me too."
+    pov "Me too."
 
     hide mikel outdoor neutral with fade
 
@@ -592,7 +659,7 @@ label ending3:
     with fade
     "(I look at the piece of paper that looks to be crumpled with some writing in it)"
     "(before I can inspect it further, I try to ask Mikel about it.)"
-    "Were you looking at this?"
+    pov "Were you looking at this?"
     hide paper inspect
     with dissolve
 
@@ -607,20 +674,20 @@ label ending3:
     Mikel "...till I was at the party."
     Mikel "I realised I stuffed it in my jacket and opened it then."
     
-    "what was in it?"
+    pov "what was in it?"
 
     hide mikel neutral gif
 
     show mikel sad away gif
     Mikel "...It was a love letter."
-    "(???)" ## Add surprised SFX ?
-    " to you??"
+    pov "(???)" ## Add surprised SFX ?
+    pov "to you??"
     hide mikel sad away gif
 
     show mikel neutral gif
     Mikel "yeah."
 
-    "who wrote it?"
+    pov "okay lucky guy, who wrote it?"
     hide mikel neutral gif
 
     show mikel sad away gif
@@ -631,7 +698,7 @@ label ending3:
     show shygirlstill gif with dissolve
 
     "(I look over to a girl standing in the corner alone. She's drinking quietly and nodding to the music meekly)" with dissolve
-    "I...don't know her." 
+    pov "I...don't know her." 
     
     show mikel neutral gif at left
     with dissolve
@@ -644,7 +711,7 @@ label ending3:
     show mikel sad away gif at left    
     Mikel "-more like had a crush on me since the beginning of the year."
     Mikel "She wrote in the letter asking if I was willing to give her a chance."
-    "Well, did you give her an answer?"
+    pov "Well, did you give her an answer?"
     hide mikel sad away gif
 
     show mikel neutral gif at left
@@ -652,7 +719,7 @@ label ending3:
 
     Mikel "What do you think?"
 
-    "well I..."
+    pov "well I..."
 
 menu:
     with dissolve
@@ -672,8 +739,8 @@ label ending3_a: ## IGNORE HER
     hide shygirlstill gif
     with dissolve
 
-    "well...you can think about it later and respond back"
-    "And it looks like she left too."
+    pov "well...you can think about it later and respond back"
+    pov "And it looks like she left too."
     hide mikel neutral gif
 
     show mikel sad away gif
@@ -682,22 +749,22 @@ label ending3_a: ## IGNORE HER
     hide mikel sad away gif
 
     show mikel mc sad away gif
-    "Mikel stood there in deep thought."
-    "I can't tell what he's thinking but it looks like its been on his mind for a while."
-    "before I can ask him about that, he breaks the silence."
+    "(Mikel stood there in deep thought.)"
+    "(I can't tell what he's thinking but it looks like its been on his mind for a while.)"
+    "(before I can ask him about that, he breaks the silence.)"
     hide mikel mc sad away gif
 
     show mikel happy armscrossed away gif
     Mikel "well the funny thing is..."
 
-    "what?"
+    pov "what?"
     hide mikel happy armscrossed away gif
 
     show mikel happy armscrossed gif
     Mikel "..."
     Mikel "well...I..."
 
-    "yes...?"
+    pov "yes...?"
 
     Mikel "I...uh... maybe thought..."
     hide mikel happy armscrossed gif
@@ -708,26 +775,26 @@ label ending3_a: ## IGNORE HER
 
     show mikel mc happy armscrossed gif
 
-    "oh okay."
+    pov "oh okay."
 
-    "............"
+    pov "............"
 
-    "Wait- WHAT?" with Shake((5, 2, 4, 0), 0.5, dist=5)
+    pov "Wait- WHAT?" with Shake((5, 2, 4, 0), 0.5, dist=5)
 
     hide mikel mc happy armscrossed gif
 
     show mikel happy armscrossed gif
     Mikel "yeah..."
 
-    "uh...I mean...- Well I-"
+    pov "uh...I mean...- Well I-"
     hide mikel happy armscrossed gif
 
     show mikel happy gif
     Mikel "forget about it. I just thought the handwriting looked like yours, that's all. Aha."
 
-    "Oh okay, aha."
+    pov "Oh okay, aha."
     
-    "I mean I wouldn't pull a prank like that on you anyways."
+    pov "I mean I wouldn't pull a prank like that on you anyways."
 
     hide mikel happy gif
 
@@ -736,15 +803,16 @@ label ending3_a: ## IGNORE HER
     Mikel "A prank on me...yeah..."
 
     Mikel "Aha....."
-    "uhh... (I didn't mean it to sound that way.)"
-    "I mean...."
-    "did you want it...to be me..?"
+
+    pov "uhh... (I didn't mean it to sound that way.)"
+    pov "I mean...."
+    pov "did you want it...to be me..?"
     hide mikel happy armscrossed away gif
 
     show mikel neutral gif
     Mikel "would it sound crazy to say if I did?"
 
-    "No- I-"
+    pov "No- I-"
 
     "(before I could continue I feel a pair of arms around me, giving me a tight hug.)"
     "(It's one of my friends )"
@@ -793,12 +861,12 @@ label ending3_b: ## TALK TO HER
     show mikel neutral gif at left
     Mikel "You think so?"
 
-    "yeah."
+    pov "yeah."
 
     show mikel happy armscrossed away gif at left
     Mikel "I guess I'll do that! I don't think I should avoid the situation. She might be a nice girl."
 
-    "Well anyone would be lucky to talk to you."
+    pov "Well anyone would be lucky to talk to you."
     hide mikel happy armscrossed away gif
 
     show mikel happy gif at left
@@ -852,7 +920,7 @@ label ending4:
         yalign 0.5
 
     
-    "Wait, that's Rohan, Clair and Alex. That's your crew right?" with dissolve
+    pov "Wait, that's Rohan, Clair and Alex. That's your crew right?" with dissolve
 
     hide grouplaughing_idle
 
@@ -869,23 +937,23 @@ label ending4:
 
     show mikel mc neutral gif
 
-    "Guess you went ahead to get their drinks as they're waiting for you?"
+    pov "Guess you went ahead to get their drinks as they're waiting for you?"
     hide mikel mc neutral gif
 
     show mikel happy gif
 
     Mikel "Hah! No, they're pretty drunk already as you can see."
 
-    "Oh yeah, I see it ..."
+    pov "Heh. Oh yeah, I see it ..."
 
-    "... Rohan's famous sleezy drunk smile says everything."
+    pov "... Rohan's famous sleezy drunk smile says everything."
     hide mikel happy gif
 
     show mikel happy armscrossed away gif
 
     "(Mikel grins a little thinking of that image but, he's still silent.)"
 
-    "Hey Mikel..."
+    pov "Hey Mikel..."
 
     hide mikel happy armscrossed away gif
 
@@ -893,7 +961,7 @@ label ending4:
 
     Mikel "Yeah?"
     
-    "You're alright....right?"
+    pov "You're alright....right?"
     hide mikel neutral gif
 
     show mikel happy gif
@@ -905,7 +973,7 @@ label ending4:
 
     Mikel "I think I need a break from partying too hard."
 
-    "Oh yeah, I feel that..."
+    pov "I feel that..."
     hide mikel happy armscrossed away gif
 
     show mikel mc happy armscrossed gif
@@ -914,7 +982,7 @@ label ending4:
 
     "(something must be really on his mind...maybe he doesn't want to be here...)"
 
-    "You know what Mikel, let's ditch this party and..."
+    pov "You know what Mikel, let's ditch this party and..."
 
 menu:
     "let's drive back to my place.":
@@ -927,7 +995,7 @@ menu:
 
 label ending4_a:
 
-    "You know what, F this party and let's drive back to my place!!"
+    pov "You know what, F this party and let's drive back to my place!!"
 
     hide mikel mc happy armscrossed gif
 
@@ -937,22 +1005,24 @@ label ending4_a:
 
     Mikel "Right now?"
 
-    "Yeah!! C'mon. Let's relive our memories of middle school!"
+    pov "Yeah!! C'mon. Let's relive our memories of middle school!"
 
-    "We go back to my place and play the same old board games we used to play as kids."
+    pov "We go back to my place and play the same old board games we used to play as kids."
     
-    "I'll drive Alex's car since you're holding on to his car key as usual."
+    pov "I'll drive Alex's car since you're holding on to his car key as usual."
+
     hide mikel neutral gif
 
     show mikel happy armscrossed away gif
 
     Mikel "Huh, yeah. Old habit from freshman year I guess."
+
     hide mikel happy armscrossed away gif
 
     show mikel happy armscrossed gif
     Mikel "Alex always needed me to hold on to his keys because he kept losing them."
 
-    "Well this bascially means that he's letting you borrow his car, riighhhtt?"
+    pov "Well this bascially means that he's letting you borrow his car, riighhhtt?"
 
     "(I grin wide at Mikel the same old way I did back then when we were kids.)"
 
@@ -963,7 +1033,7 @@ label ending4_a:
 
     Mikel "You know what, I like that idea. I wanna see you attempt to drive back home in this state. It'll be fun."
 
-    "YEAH!" with Shake((5, 5, 5, 5), 0.5, dist=10)
+    pov "YEAH!" with Shake((5, 5, 5, 5), 0.5, dist=10)
 
     Mikel "YEAH! AHA!" with Shake((5, 5, 5, 5), 0.5, dist=10)
 
@@ -985,7 +1055,7 @@ label ending4_a:
 
     "(Mikel holds back his smile but I can tell he's excited)"
 
-    "Ready?"
+    pov "Ready?"
 
     Mikel "Ready."
 
@@ -1001,7 +1071,7 @@ label ending4_a:
 
     show bg black
 
-    play sound "audio/carcrash.mp3"
+    play audio "audio/carcrash.mp3"
 
     "" with Shake((10, 10, 10, 10), 0.5, dist=30)
 
@@ -1011,9 +1081,9 @@ label ending4_a:
 
 
 label ending4_b:
-    "Actually, I need a smoke break. Wanna step out with me?"
+    pov "Actually, I need a smoke break. Wanna step out with me?"
 
-    "C'mon, I know you're bored of this party."
+    pov "C'mon, I know you're bored of this party."
 
     show mikel neutral gif with dissolve
     pause 3.0
@@ -1037,140 +1107,7 @@ label ending4_b:
 
     stop music fadeout 2.0
 
-    play music "audio/outdoormusic.mp3" volume 2.0 fadein 3.0
-
-    show bg outdoor with fade
-    pause 0.5
-
-    "( When we open the door and step into the backyard, the fresh air hits us and the music fades out. )"
-
-    "( Mikel opens the box and pulls out the cigarette. )"
-
-    "( He pulls another one out and passes it to me. )"
-
-    "( We both use my lighter to light up the cigarette... )"
-
-    show mikel outdoor neutral away with dissolve
-    
-    Mikel "..."
-
-    "( Mikel gazes at the grass and fences ahead and breathes in the smoke for a second.)"
-
-    hide mikel outdoor neutral away 
-
-    show mikel outdoor neutral 
-
-    Mikel "Phew, that party is packed with just sweat and noise."
-
-    Mikel "I'm glad we're out."
-
-    "I thought you like that scene?"
-
-    hide mikel outdoor neutral
-
-    show mikel outdoor sad
-
-    Mikel "Thought I did too..."
-
-    hide mikel outdoor sad
-
-    show mikel outdoor sad away
-
-    Mikel "But the company I have there feels so....tiring ..."
-
-    Mikel "I...."
-
-    hide mikel outdoor sad away
-
-    show mikel outdoor neutral
-
-    Mikel "... would rather be with you alone right now."
-
-    "Oh.."
-
-    "( I try not to focus so hard on how my heart skips a beat from that sentence...)"
-
-    "Me too. My friends were gonna make me have another shot, I'm glad I ran with you here."
-
-    "I almost escaped the dreadful vomit session that comes with it, aha."
-
-    Mikel "So I saved you is what you're saying. heh."
-
-    "When you word it that way, yeah!"
-    
-    "Thanks for saving me."
-    hide mikel outdoor neutral
-
-    show mikel outdoor neutral away
-
-    Mikel "Pleasures all mine."
-
-    "(I stare at Mikel and notice his furrowed brows...)"
-    
-    "(He's still in deep thought about something...)"
-
-    "You're thinking about pooping?"
-
-    hide mikel outdoor neutral away
-
-    show mikel outdoor shock
-
-    "What??"
-
-    Mikel "No! I did that- before the- Urgh I mean-"
-
-    hide mikel outdoor shock
-    show mikel outdoor sad away
-
-    Mikel "..."
-    hide mikel outdoor sad away
-    show mikel outdoor sad
-
-    Mikel "I'm just thinking about the friends we have..."
-
-
-    Mikel "I spent all my parties and fun with those people but I know..."
-
-    hide mikel outdoor sad
-
-    show mikel outdoor sad away
-
-    Mikel "... We're not gonna be so close once we drift apart to different colleges..."
-    
-    Mikel "and I..."
-
-    hide mikel outdoor sad away
-
-    show mikel outdoor sad
-
-    Mikel "And...I wish ..."
-    
-    Mikel "I got to spend more time with you instead."
-
-    Mikel "And I feel sorry that I didn't."
-
-    "Oh wow. I ..."
-    
-    "... I was thinking the same thing actually."
-
-    "I know we were busy with college applications and stuff so I can't blame you."
-
-    hide mikel outdoor sad
-
-    show mikel outdoor neutral    
-    Mikel "I'm still glad we're here talking..."
-
-    "Me too."
-
-    hide mikel outdoor neutral with fade
-
-    "(We both smoke the last bit of the cigarette and stare out in the sky.)"
-
-    "(the crowd at the party was slowly dying down since it was 2 am.)"
-
-    "(I say my goodbyes to Mikel and grab a cab back home.)"
-
-    jump happyending
+    jump ending24_common
 
 
 label ending1_a:
@@ -1207,7 +1144,7 @@ label happyending:
 
     "(....)"
 
-    "I think...I should do it."
+    pov "I think...I should do it."
 
     "(I grab a paper and a pen from my desk and sit on the chair.)"
 
