@@ -16,10 +16,19 @@ image jason happy gif:
 
 image jason smug gif:
     "jason smug 1"
-    pause 0.6
+    pause 0.4
     "jason smug 2"
-    pause 0.6
+    pause 0.4
+    "jason smug 1"
+    pause 0.4
+    "jason smug 2"
+    pause 0.4
+    "jason smug eyes closed 1"
+    pause 0.3
+    "jason smug eyes closed 2"
+    pause 0.3
     repeat
+
 
 image jason mad gif:
     "jason mad 1"
